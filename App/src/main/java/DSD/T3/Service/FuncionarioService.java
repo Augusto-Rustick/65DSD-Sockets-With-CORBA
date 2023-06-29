@@ -5,6 +5,16 @@ import DSD.T3.Entity.FuncionarioPOA;
 
 public class FuncionarioService extends FuncionarioPOA {
 
+   public FuncionarioService(String cpf, String nome, String endereco, String ctps, int quantidadeVendas) {
+      this.ctps = ctps;
+      this.quantidadeVendas = quantidadeVendas;
+      this.id = id;
+      this.cpf = cpf;
+      this.nome = nome;
+      this.endereco = endereco;
+      this.departamento = departamento;
+   }
+
    private String ctps;
    private int quantidadeVendas;
    private int id;
@@ -82,4 +92,5 @@ public class FuncionarioService extends FuncionarioPOA {
    public void departamento(int departamento) {
       this.departamento = departamento;
    }
+
 }

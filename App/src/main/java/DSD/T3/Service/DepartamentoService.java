@@ -4,6 +4,12 @@ import DSD.T3.Entity.DepartamentoPOA;
 
 public class DepartamentoService extends DepartamentoPOA {
 
+   public DepartamentoService(String nome, String produto, int quantidadeEstoque) {
+      this.nome = nome;
+      this.produto = produto;
+      this.quantidadeEstoque = quantidadeEstoque;
+   }
+
    private String nome;
    private String produto;
    private int quantidadeEstoque;

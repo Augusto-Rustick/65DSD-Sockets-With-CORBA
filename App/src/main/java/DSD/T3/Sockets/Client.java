@@ -1,46 +1,65 @@
 package DSD.T3.Sockets;
 
-
-
-import DSD.T3.Entity.Departamento;
-import DSD.T3.Entity.DepartamentoHelper;
-import org.omg.CORBA.ORB;
-import org.omg.CORBA.Object;
-import org.omg.CosNaming.NameComponent;
-import org.omg.CosNaming.NamingContext;
-import org.omg.CosNaming.NamingContextHelper;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 
 public class Client {
 
    public static void main(String args[]) {
       try {
-         // Crie e inicialize o ORB
-         ORB orb = ORB.init(args, null);
+         // Conecta ao servidor na porta 9000
+         Socket socket = new Socket("localhost", 9000);
 
-         // Obtenha uma referência para o serviço de nomes
-         Object objRef = orb.resolve_initial_references("NameService");
-         NamingContext namingContext = NamingContextHelper.narrow(objRef);
+         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
-         // Crie um array de NameComponent contendo o nome associado ao objeto
-         NameComponent[] name = { new NameComponent("Departamento", "") };
+         BufferedReader consoleInput = new BufferedReader(new InputStreamReader(System.in));
 
-         // Realize o lookup para obter a referência do objeto
-         Object obj = namingContext.resolve(name);
+         // Loop para interagir com o servidor
+         while (true) {
+            // Recebe a lista de serviços do servidor
+            String services = in.readLine();
+            System.out.println("Serviços disponíveis:");
+            System.out.println(services);
 
-         // Realize o narrow da referência para a interface Departamento
-         Departamento departamentoRef = DepartamentoHelper.narrow(obj);
+            // Aguarda a escolha do serviço pelo cliente
+            String chosenService = consoleInput.readLine();
+            out.println(chosenService);
 
-         // Use os métodos da interface Departamento
-         departamentoRef.setProduto("Produto A");
-         departamentoRef.setQuantidadeEstoque(10);
+            if (chosenService.equalsIgnoreCase("exit")) {
+               System.out.println("Cliente desconectado.");
+               break;
+            }
 
-         // Exemplo de uso dos demais métodos
-         System.out.println("Nome do departamento: " + departamentoRef.getNome());
-         System.out.println("Produto do departamento: " + departamentoRef.getProduto());
-         System.out.println("Quantidade de estoque do departamento: " + departamentoRef.getQuantidadeEstoque());
-      } catch (Exception e) {
-         System.err.println("ERROR: " + e);
-         e.printStackTrace(System.out);
+            // Loop para interagir com o serviço escolhido
+            while (true) {
+               // Recebe a lista de operações do serviço
+               String operations = in.readLine();
+               System.out.println("Operações disponíveis:");
+               System.out.println(operations);
+
+               // Aguarda a escolha da operação pelo cliente
+               String chosenOperation = consoleInput.readLine();
+               out.println(chosenOperation);
+
+               if (chosenOperation.equalsIgnoreCase("exit")) {
+                  System.out.println("Retornando para seleção de serviço.");
+                  break;
+               }
+
+               // Executa a operação selecionada
+               String response = in.readLine();
+               System.out.println(response);
+            }
+         }
+
+         // Fecha a conexão
+         socket.close();
+      } catch (IOException e) {
+         e.printStackTrace();
       }
    }
 }

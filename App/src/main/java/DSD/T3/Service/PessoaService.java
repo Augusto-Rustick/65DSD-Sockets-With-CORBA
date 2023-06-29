@@ -5,6 +5,14 @@ import DSD.T3.Entity.PessoaPOA;
 
 public class PessoaService extends PessoaPOA {
 
+   public PessoaService(int id, String cpf, String nome, String endereco, int departamento) {
+      this.id = id;
+      this.cpf = cpf;
+      this.nome = nome;
+      this.endereco = endereco;
+      this.departamento = departamento;
+   }
+
    private int id;
    private String cpf;
    private String nome;
