@@ -1,16 +1,16 @@
-package DSD.T1.Entity;
+package DSD.T3.Entity;
 
 
 /**
  * Generated from IDL interface "Departamento".
  *
  * @author JacORB IDL compiler V 3.9
- * @version generated at 29 de jun de 2023 00:06:19
+ * @version generated at 29 de jun de 2023 00:14:07
  */
 
 public abstract class DepartamentoPOA
 	extends org.omg.PortableServer.Servant
-	implements org.omg.CORBA.portable.InvokeHandler, DSD.T1.Entity.DepartamentoOperations
+	implements org.omg.CORBA.portable.InvokeHandler, DSD.T3.Entity.DepartamentoOperations
 {
 	static private final java.util.HashMap<String,Integer> m_opsHash = new java.util.HashMap<String,Integer>();
 	static
@@ -21,17 +21,17 @@ public abstract class DepartamentoPOA
 		m_opsHash.put ( "getQuantidadeEstoque", Integer.valueOf(3));
 		m_opsHash.put ( "getProduto", Integer.valueOf(4));
 	}
-	private String[] ids = {"IDL:DSD/T1/Entity/Departamento:1.0"};
-	public DSD.T1.Entity.Departamento _this()
+	private String[] ids = {"IDL:DSD/T3/Entity/Departamento:1.0"};
+	public DSD.T3.Entity.Departamento _this()
 	{
 		org.omg.CORBA.Object __o = _this_object() ;
-		DSD.T1.Entity.Departamento __r = DSD.T1.Entity.DepartamentoHelper.narrow(__o);
+		DSD.T3.Entity.Departamento __r = DSD.T3.Entity.DepartamentoHelper.narrow(__o);
 		return __r;
 	}
-	public DSD.T1.Entity.Departamento _this(org.omg.CORBA.ORB orb)
+	public DSD.T3.Entity.Departamento _this(org.omg.CORBA.ORB orb)
 	{
 		org.omg.CORBA.Object __o = _this_object(orb) ;
-		DSD.T1.Entity.Departamento __r = DSD.T1.Entity.DepartamentoHelper.narrow(__o);
+		DSD.T3.Entity.Departamento __r = DSD.T3.Entity.DepartamentoHelper.narrow(__o);
 		return __r;
 	}
 	public org.omg.CORBA.portable.OutputStream _invoke(String method, org.omg.CORBA.portable.InputStream _input, org.omg.CORBA.portable.ResponseHandler handler)

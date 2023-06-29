@@ -1,26 +1,26 @@
-package DSD.T1.Entity;
+package DSD.T3.Entity;
 
 
 /**
  * Generated from IDL interface "Transportador".
  *
  * @author JacORB IDL compiler V 3.9
- * @version generated at 29 de jun de 2023 00:06:19
+ * @version generated at 29 de jun de 2023 00:14:07
  */
 
 public class _TransportadorStub
 	extends org.omg.CORBA.portable.ObjectImpl
-	implements DSD.T1.Entity.Transportador
+	implements DSD.T3.Entity.Transportador
 {
 	/** Serial version UID. */
 	private static final long serialVersionUID = 1L;
-	private String[] ids = {"IDL:DSD/T1/Entity/Transportador:1.0","IDL:DSD/T1/Entity/Pessoa:1.0"};
+	private String[] ids = {"IDL:DSD/T3/Entity/Transportador:1.0","IDL:DSD/T3/Entity/Pessoa:1.0"};
 	public String[] _ids()
 	{
 		return ids;
 	}
 
-	public final static java.lang.Class _opsClass = DSD.T1.Entity.TransportadorOperations.class;
+	public final static java.lang.Class _opsClass = DSD.T3.Entity.TransportadorOperations.class;
 	public java.lang.String telefone()
 	{
 		while(true)

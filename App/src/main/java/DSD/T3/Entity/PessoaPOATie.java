@@ -1,4 +1,4 @@
-package DSD.T1.Entity;
+package DSD.T3.Entity;
 
 import org.omg.PortableServer.POA;
 
@@ -6,7 +6,7 @@ import org.omg.PortableServer.POA;
  * Generated from IDL interface "Pessoa".
  *
  * @author JacORB IDL compiler V 3.9
- * @version generated at 29 de jun de 2023 00:06:19
+ * @version generated at 29 de jun de 2023 00:14:07
  */
 
 public class PessoaPOATie
@@ -24,16 +24,16 @@ public class PessoaPOATie
 		_delegate = delegate;
 		_poa = poa;
 	}
-	public DSD.T1.Entity.Pessoa _this()
+	public DSD.T3.Entity.Pessoa _this()
 	{
 		org.omg.CORBA.Object __o = _this_object() ;
-		DSD.T1.Entity.Pessoa __r = DSD.T1.Entity.PessoaHelper.narrow(__o);
+		DSD.T3.Entity.Pessoa __r = DSD.T3.Entity.PessoaHelper.narrow(__o);
 		return __r;
 	}
-	public DSD.T1.Entity.Pessoa _this(org.omg.CORBA.ORB orb)
+	public DSD.T3.Entity.Pessoa _this(org.omg.CORBA.ORB orb)
 	{
 		org.omg.CORBA.Object __o = _this_object(orb) ;
-		DSD.T1.Entity.Pessoa __r = DSD.T1.Entity.PessoaHelper.narrow(__o);
+		DSD.T3.Entity.Pessoa __r = DSD.T3.Entity.PessoaHelper.narrow(__o);
 		return __r;
 	}
 	public PessoaOperations _delegate()

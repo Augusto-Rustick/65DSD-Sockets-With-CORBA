@@ -1,26 +1,26 @@
-package DSD.T1.Entity;
+package DSD.T3.Entity;
 
 
 /**
  * Generated from IDL interface "Departamento".
  *
  * @author JacORB IDL compiler V 3.9
- * @version generated at 29 de jun de 2023 00:06:19
+ * @version generated at 29 de jun de 2023 00:14:07
  */
 
 public class _DepartamentoStub
 	extends org.omg.CORBA.portable.ObjectImpl
-	implements DSD.T1.Entity.Departamento
+	implements DSD.T3.Entity.Departamento
 {
 	/** Serial version UID. */
 	private static final long serialVersionUID = 1L;
-	private String[] ids = {"IDL:DSD/T1/Entity/Departamento:1.0"};
+	private String[] ids = {"IDL:DSD/T3/Entity/Departamento:1.0"};
 	public String[] _ids()
 	{
 		return ids;
 	}
 
-	public final static java.lang.Class _opsClass = DSD.T1.Entity.DepartamentoOperations.class;
+	public final static java.lang.Class _opsClass = DSD.T3.Entity.DepartamentoOperations.class;
 	public void setProduto(java.lang.String produto)
 	{
 		while(true)

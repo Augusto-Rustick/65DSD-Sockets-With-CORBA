@@ -1,15 +1,15 @@
-package DSD.T1.Entity;
+package DSD.T3.Entity;
 
 
 /**
  * Generated from IDL interface "Funcionario".
  *
  * @author JacORB IDL compiler V 3.9
- * @version generated at 29 de jun de 2023 00:06:19
+ * @version generated at 29 de jun de 2023 00:14:07
  */
 
 public interface FuncionarioOperations
-	extends DSD.T1.Entity.PessoaOperations
+	extends DSD.T3.Entity.PessoaOperations
 {
 	/* constants */
 	/* operations  */

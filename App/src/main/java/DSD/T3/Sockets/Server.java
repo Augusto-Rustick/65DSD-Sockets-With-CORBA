@@ -3,7 +3,7 @@ package DSD.T3.Sockets;
 
 import DSD.T3.Entity.Departamento;
 import DSD.T3.Entity.DepartamentoHelper;
-import DSD.T3.Entity.DepartamentoImpl;
+import DSD.T3.Service.DepartamentoService;
 import org.omg.CORBA.ORB;
 import org.omg.CORBA.Object;
 import org.omg.CosNaming.NameComponent;
@@ -24,10 +24,10 @@ public class Server {
          rootPOA.the_POAManager().activate();
 
          // Crie uma instância do DepartamentoImpl
-         DepartamentoImpl departamentoImpl = new DepartamentoImpl();
+         DepartamentoService departamentoService = new DepartamentoService();
 
          // Obtém uma referência do objeto a partir do DepartamentoImpl
-         Object ref = rootPOA.servant_to_reference(departamentoImpl);
+         Object ref = rootPOA.servant_to_reference(departamentoService);
 
          // Realize o downcast da referência para a interface Departamento
          Departamento departamentoRef = DepartamentoHelper.narrow(ref);
