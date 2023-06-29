@@ -1,63 +1,50 @@
 package DSD.T3.Sockets;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.Socket;
+import org.omg.CORBA.ORB;
+import org.omg.CORBA.ORBPackage.InvalidName;
+import org.omg.CORBA.Object;
+import org.omg.CosNaming.NamingContextExt;
+import org.omg.CosNaming.NamingContextExtHelper;
+
+import java.io.*;
 
 public class Client {
+   private static InputStream in;
+   private static OutputStream out;
+   private final byte[] data = new byte[1024];
 
-   public static void main(String args[]) {
+   public static void main(String args[]) throws InvalidName {
       try {
-         // Conecta ao servidor na porta 9000
-         Socket socket = new Socket("localhost", 9000);
+         // Inicializa o ORB
+         ORB orb = ORB.init(args, null);
 
-         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+         // Obtém a referência para o serviço de nomes
+         Object objRef = orb.resolve_initial_references("NameService");
+         NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
 
          BufferedReader consoleInput = new BufferedReader(new InputStreamReader(System.in));
 
          // Loop para interagir com o servidor
          while (true) {
-            // Recebe a lista de serviços do servidor
-            String services = in.readLine();
-            System.out.println("Serviços disponíveis:");
-            System.out.println(services);
+            // Recebe a mensagem do servidor
+            String message = String.valueOf(in.read());
+            System.out.println(message);
 
-            // Aguarda a escolha do serviço pelo cliente
-            String chosenService = consoleInput.readLine();
-            out.println(chosenService);
+            // Aguarda a escolha do cliente
+            String chosenOption = consoleInput.readLine();
 
-            if (chosenService.equalsIgnoreCase("exit")) {
+            if (chosenOption.equalsIgnoreCase("exit")) {
                System.out.println("Cliente desconectado.");
                break;
             }
 
-            // Loop para interagir com o serviço escolhido
-            while (true) {
-               // Recebe a lista de operações do serviço
-               String operations = in.readLine();
-               System.out.println("Operações disponíveis:");
-               System.out.println(operations);
+            // Envia a escolha do cliente para o servidor
+            out.write(chosenOption.getBytes());
 
-               // Aguarda a escolha da operação pelo cliente
-               String chosenOperation = consoleInput.readLine();
-               out.println(chosenOperation);
-
-               if (chosenOperation.equalsIgnoreCase("exit")) {
-                  System.out.println("Retornando para seleção de serviço.");
-                  break;
-               }
-
-               // Executa a operação selecionada
-               String response = in.readLine();
-               System.out.println(response);
-            }
+            // Recebe a resposta do servidor
+            String response = String.valueOf(in.read());
+            System.out.println(response);
          }
-
-         // Fecha a conexão
-         socket.close();
       } catch (IOException e) {
          e.printStackTrace();
       }
